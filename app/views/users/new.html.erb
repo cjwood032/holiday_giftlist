@@ -1,6 +1,6 @@
 <h3> New User Form </h3>
 
-<%= form_for @user do |f| %>
+<%= form_for(@user, authenticity_token:true )do |f| %>
 
     <div class="form-group">
       <%= f.label :name %>

@@ -25,6 +25,6 @@ class UsersController < ApplicationController
       end
     private
     def user_params
-        params.require(:user).permit(:body) #double check after creating form
-    end
+        params.require(:user).permit(:name, :email, :role, :password, :password_confirmation, :admin)
+      end
 end
