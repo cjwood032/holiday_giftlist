@@ -1,4 +1,4 @@
-class FriendController < ApplicationController
+class FriendsController < ApplicationController
     def index
         @friends=Friend.ApplicationController
         render json: @friends, status:200

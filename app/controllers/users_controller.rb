@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
     def index
     end
     def show
@@ -19,6 +19,10 @@ class UserController < ApplicationController
         @user.delete
         render json: {userId: @user.id}
     end
+    def new
+        @user = User.new
+        current_user=@user
+      end
     private
     def user_params
         params.require(:user).permit(:body) #double check after creating form

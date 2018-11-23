@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
-
+  get "/signin", to: "sessions#new"
+  post '/signin' => 'sessions#create'
   resources :users, only: [:new, :create, :show] do
     resources :friends do
       resources :gifts
