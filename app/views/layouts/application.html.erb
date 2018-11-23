@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Holiday Gift Helper</title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <div class="container" role="main">
+      <%= render 'layouts/navigation' %>
+      <br>
+      <div id="errors">
+        <% if flash.any? %>
+            <% flash.each do |key, value| %>
+              <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+            <% end %>
+        <% end %>
+      </div>
+      <div id="app-container">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

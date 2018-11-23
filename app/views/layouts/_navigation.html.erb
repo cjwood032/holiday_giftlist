@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse navbar-collapse collapse" role="navigation">
+      <div class="nav">
+        
+        <br>
+        <% if !logged_in? %>
+          <a class="navbar-brand" href="<%=new_user_path%>">Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_path %>">Log In</a>
+        <% else %>
+          
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+          <a class="navbar-brand" href="<%= decks_path%>"/>Decks</a>
+          <a class="navbar-brand" href="<%= games_path%>"/>Play</a>
+          <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+          <a class="navbar-brand">
+            <div align="right">
+              <div id="notice"><i><%= notice %></div><br></n>
+            </div>
+          </a>
+          <%=current_user.Username%> logged in
+          
+        <%end%>
+
+        </div>
+      </div>
