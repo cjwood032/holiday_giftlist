@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/signin", to: "sessions#new"
   post '/signin' => 'sessions#create'
   resources :users, only: [:new, :create, :show] do
+    resources :gifts
     resources :friends, only: [:show, :new, :create, :edit, :update] do
       resources :gifts
       get 'gifts/:id/next', to: 'gifts#next'

@@ -8,15 +8,10 @@
         <% else %>
           
           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
-          <a class="navbar-brand" href="<%= decks_path%>"/>Decks</a>
-          <a class="navbar-brand" href="<%= games_path%>"/>Play</a>
-          <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
-          <a class="navbar-brand">
-            <div align="right">
-              <div id="notice"><i><%= notice %></div><br></n>
-            </div>
-          </a>
-          <%=current_user.Username%> logged in
+          <a class="navbar-brand" href="<%= user_friends_path(current_user)%>"/>Friends</a>
+          <a class="navbar-brand" href="<%= user_gifts_path(current_user)%>"/>Gifts</a>
+          <a class="navbar-brand" data-method="delete" href="<%= logout_path %>">Log Out</a>
+          <div id = "navbar-name"><%=current_user.name%> logged in</div>
           
         <%end%>
 

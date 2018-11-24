@@ -5273,3 +5273,376 @@ Processing by FriendsController#new as HTML
 Completed 200 OK in 42ms (Views: 24.4ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:33:43 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (0.9ms)
+  Rendered friends/new.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 26ms (Views: 21.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:33:44 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (0.7ms)
+  Rendered friends/new.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 23ms (Views: 18.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:33:59 -0500
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:33:59 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#new as HTML
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.2ms)
+  Rendered sessions/new.html.erb within layouts/application (60.8ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 377ms (Views: 355.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_navigation.html.erb (0.1ms)
+Completed 200 OK in 387ms (Views: 359.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-11-24 14:34:05 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"emYIn8QRTSqSw7YGF6WyfYI8VBfTmE2+NVa7tP7E2u3wwHIj2P9k5gUp51CXbxzKmfEhecg3OHoETC6xav+edg==", "email"=>"cjwood032@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:13
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 62ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:34:05 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (22.9ms)
+  Rendered layouts/_navigation.html.erb (232.5ms)
+Completed 500 Internal Server Error in 278ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `decks_path' for #<#<Class:0x007f9d25880f80>:0x007f9d236dff98>):
+     8:         <% else %>
+     9:           
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= decks_path%>"/>Decks</a>
+    12:           <a class="navbar-brand" href="<%= games_path%>"/>Play</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+  
+app/views/layouts/_navigation.html.erb:11:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156450815160'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156429618360'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:35:36 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_navigation.html.erb (317.1ms)
+Completed 500 Internal Server Error in 344ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `friends_path' for #<#<Class:0x007f9d25880f80>:0x007f9d205c0fc0>):
+     8:         <% else %>
+     9:           
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= friends_path%>"/>Friends</a>
+    12:           <a class="navbar-brand" href="<%= gifts_path%>"/>Gifts</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+  
+app/views/layouts/_navigation.html.erb:11:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156429913260'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156429752740'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:36:08 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_navigation.html.erb (2.8ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"create", :controller=>"friends", :id=>"1"}, missing required keys: [:user_id]):
+     8:         <% else %>
+     9:           
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= user_friends_path%>"/>Friends</a>
+    12:           <a class="navbar-brand" href="<%= user_friends_gifts_path%>"/>Gifts</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+  
+app/views/layouts/_navigation.html.erb:11:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156438871360'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156450157720'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:36:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_navigation.html.erb (132.3ms)
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_friends_gifts_path' for #<#<Class:0x007f9d25880f80>:0x007f9d206e9370>
+Did you mean?  user_friend_gift_path
+               user_friend_gifts_path
+               user_friends_path
+               user_friend_path
+               user_friend_gift_url
+               user_friend_gifts_url):
+     9:           
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= user_friends_path(current_user)%>"/>Friends</a>
+    12:           <a class="navbar-brand" href="<%= user_friends_gifts_path(current_user)%>"/>Gifts</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+    15:             <div align="right">
+  
+app/views/layouts/_navigation.html.erb:12:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156415338820'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156462310560'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:37:23 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_navigation.html.erb (2.9ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"index", :controller=>"gifts", :id=>"1", :user_id=>#<User id: 1, name: "chris", budget: nil, email: "cjwood032@gmail.com", password_digest: "$2a$10$s3gmNT2.ZVMwnoTQKV2iN.m5OPw9MVUmDLDMQQNZMV3...", created_at: "2018-11-23 21:47:30", updated_at: "2018-11-23 21:47:30">}, missing required keys: [:friend_id]):
+     9:           
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= user_friends_path(current_user)%>"/>Friends</a>
+    12:           <a class="navbar-brand" href="<%= user_friend_gifts_path(current_user)%>"/>Gifts</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+    15:             <div align="right">
+  
+app/views/layouts/_navigation.html.erb:12:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156381117060'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156437832160'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:37:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_navigation.html.erb (130.8ms)
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_friends_gift_path' for #<#<Class:0x007f9d25880f80>:0x007f9d1d4f7cb8>
+Did you mean?  user_friend_gift_path
+               user_friend_gifts_path
+               user_friends_path
+               user_friend_path
+               user_friend_gift_url
+               user_friend_gifts_url):
+     9:           
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= user_friends_path(current_user)%>"/>Friends</a>
+    12:           <a class="navbar-brand" href="<%= user_friends_gift_path(current_user)%>"/>Gifts</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+    15:             <div align="right">
+  
+app/views/layouts/_navigation.html.erb:12:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156388541980'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156389137220'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:39:28 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_navigation.html.erb (301.2ms)
+Completed 500 Internal Server Error in 367ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `signout_path' for #<#<Class:0x007f9d1df90fd0>:0x007f9d1df81eb8>
+Did you mean?  signin_path):
+    10:           <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Home</a>
+    11:           <a class="navbar-brand" href="<%= user_friends_path(current_user)%>"/>Friends</a>
+    12:           <a class="navbar-brand" href="<%= user_gifts_path(current_user)%>"/>Gifts</a>
+    13:           <a class="navbar-brand" data-method="delete" href="<%= signout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+    15:             <div align="right">
+    16:               <div id="notice"><i><%= notice %></div><br></n>
+  
+app/views/layouts/_navigation.html.erb:13:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156390306460'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156378966860'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:40:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_navigation.html.erb (34.4ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `flash' for #<ActionDispatch::Request:0x007f9d248a0b38>):
+    13:           <a class="navbar-brand" data-method="delete" href="<%= logout_path %>">Log Out</a>
+    14:           <a class="navbar-brand">
+    15:             <div align="right">
+    16:               <div id="notice"><i><%= notice %></div><br></n>
+    17:             </div>
+    18:           </a>
+    19:           <%=current_user.Username%> logged in
+  
+app/views/layouts/_navigation.html.erb:16:in `_app_views_layouts__navigation_html_erb___3685095638556785998_70156385455620'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___133975243456559136_70156439034220'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:40:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 22ms (Views: 16.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:41:00 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 42ms (Views: 34.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:41:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 26ms (Views: 21.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:41:53 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 28ms (Views: 23.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:41:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 28ms (Views: 23.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:42:55 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 1718ms (Views: 1714.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application-48976717f00604e587fccdcadcd34f9e29a85b6f4c4b7120b19607225a569180.css" for 127.0.0.1 at 2018-11-24 14:42:57 -0500
