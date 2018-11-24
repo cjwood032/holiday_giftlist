@@ -1,0 +1,14 @@
+<h4><%=@user.name%>'s budget</h4>
+<strong>Budget: $<%=@user.budget%></strong>
+<br><% if @user.friends.size ==0%>
+    You need to add friends!
+<%else%>
+    <%= render partial: "friends/table"%>
+<%end%><br>
+<%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
+
+<br><% if @user.gifts.size ==0%>
+    You have not purchased any gifts yet!
+<%else%>
+    <%= render partial: "gifts/table"%>
+<%end%><br>

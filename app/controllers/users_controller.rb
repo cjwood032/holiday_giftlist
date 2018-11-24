@@ -3,11 +3,11 @@ class UsersController < ApplicationController
     end
     def show
         @user = User.find(params[:id])
-        render json: @user, status: 200
+        #render json: @user, status: 200
     end
     def create
         @user = User.create(user_params)
-        render json: @user, status: 200
+        redirect_to user_path(@user)
     end
     def update
         @user = User.find(params[:id])
@@ -25,6 +25,6 @@ class UsersController < ApplicationController
       end
     private
     def user_params
-        params.require(:user).permit(:name, :email, :role, :password, :password_confirmation, :admin)
+        params.require(:user).permit(:name, :email, :budget, :password, :password_confirmation)
       end
 end
