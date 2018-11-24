@@ -13,11 +13,6 @@
       <%= render 'layouts/navigation' %>
       <br>
       <div id="errors">
-        <% if flash.any? %>
-            <% flash.each do |key, value| %>
-              <div class="alert alert-info alert-<%= key %>"><%= value %></div>
-            <% end %>
-        <% end %>
       </div>
       <div id="app-container">
         <%= yield %>

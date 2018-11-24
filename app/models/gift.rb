@@ -1,4 +1,4 @@
 class Gift < ApplicationRecord
     belongs_to :user
-    belongs_to :friend
+    has_many :friends, through: :friend_gifts
 end

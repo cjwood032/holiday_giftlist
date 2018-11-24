@@ -4571,3 +4571,705 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/users/3" for 127.0.0.1 at 2018-11-24 10:44:36 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:3
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "gifts" INNER JOIN "friends" ON "gifts"."friend_id" = "friends"."id" WHERE "friends"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 39ms (Views: 33.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:44:38 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/new.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2018-11-24 10:45:05 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "gifts" INNER JOIN "friends" ON "gifts"."friend_id" = "friends"."id" WHERE "friends"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:10
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 28ms (Views: 24.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:45:06 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (0.6ms)
+  Rendered friends/new.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 34ms (Views: 31.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:46:03 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (300.0ms)
+  Rendered friends/new.html.erb within layouts/application (302.1ms)
+Completed 500 Internal Server Error in 312ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `friend' for #<#<Class:0x007fb030437820>:0x007fb02f1c62b8>):
+    1: <%= form_for ([current_user, friend]), html: {:id => "friend-form"} do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197328523960'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197340682180'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:47:47 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (2.1ms)
+  Rendered friends/new.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for ([current_user, friend]), html: {:id => "friend-form"} do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197339875520'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197340032820'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:48:13 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (125.1ms)
+  Rendered friends/new.html.erb within layouts/application (128.3ms)
+Completed 500 Internal Server Error in 160ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `friends_path' for #<#<Class:0x007fb02db478c0>:0x007fb02db45bb0>):
+    1: <%= form_for ([current_user, friend]), html: {:id => "friend-form"} do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197350205020'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197328560900'
+Started GET "/friends/new" for 127.0.0.1 at 2018-11-24 10:49:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/friends/new"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:51:12 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (116.5ms)
+  Rendered friends/new.html.erb within layouts/application (118.5ms)
+Completed 500 Internal Server Error in 126ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `friends_path' for #<#<Class:0x007fb02db478c0>:0x007fb028456c00>):
+    1: <%= form_for [current_user, friend], html: {:id => "friend-form"} do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197283270480'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197283306360'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:51:42 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.1ms)
+  Rendered friends/new.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/christopherwood/Desktop/Projects/holiday_giftlist/app/views/friends/_form.html.erb:1: syntax error, unexpected keyword_do_block
+..._for [current_user, friend], do |f| @output_buffer.safe_appe...
+...                               ^
+/Users/christopherwood/Desktop/Projects/holiday_giftlist/app/views/friends/_form.html.erb:4: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/friends/_form.html.erb:1: syntax error, unexpected keyword_do_block
+app/views/friends/_form.html.erb:4: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197271999680'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:51:52 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (134.7ms)
+  Rendered friends/new.html.erb within layouts/application (136.7ms)
+Completed 500 Internal Server Error in 145ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `friends_path' for #<#<Class:0x007fb02db478c0>:0x007fb02f36d170>):
+    1: <%= form_for [current_user, friend] do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197350475860'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197341547960'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:52:05 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (0.5ms)
+  Rendered friends/new.html.erb within layouts/application (2.6ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/christopherwood/Desktop/Projects/holiday_giftlist/app/views/friends/_form.html.erb:1: syntax error, unexpected ',', expecting ')'
+...ppend=  form_for (current_user, friend) do |f| @output_buffe...
+...                               ^
+/Users/christopherwood/Desktop/Projects/holiday_giftlist/app/views/friends/_form.html.erb:4: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/friends/_form.html.erb:1: syntax error, unexpected ',', expecting ')'
+app/views/friends/_form.html.erb:4: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197284685160'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:52:23 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (121.3ms)
+  Rendered friends/new.html.erb within layouts/application (123.2ms)
+Completed 500 Internal Server Error in 132ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `friends_path' for #<#<Class:0x007fb02db478c0>:0x007fb02f243678>):
+    1: <%= form_for ([current_user, friend]) do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197305580240'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197305745500'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:54:29 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (pry):21
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (pry):22
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ (pry):27
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (137.0ms)
+  Rendered friends/new.html.erb within layouts/application (139.7ms)
+Completed 500 Internal Server Error in 307927ms (ActiveRecord: 2.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `friends_path' for #<#<Class:0x007fb02aeb7738>:0x007fb02aeb5cd0>):
+    1: <%= form_for ([user, friend]), html: {:id => "friend-form"} do |f| %>
+    2: <%end%>
+  
+app/views/friends/_form.html.erb:1:in `_app_views_friends__form_html_erb___3692299287010768907_70197340990420'
+app/views/friends/new.html.erb:2:in `_app_views_friends_new_html_erb__3980144322619354868_70197349171340'
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 10:59:41 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.4ms)
+  Rendered friends/new.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 2923ms (Views: 28.9ms | ActiveRecord: 1.4ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateFriendGifts (20181124185210)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181124185210_create_friend_gifts.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "friend_gifts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "friend_id" integer, "gift_id" integer)[0m
+  ↳ db/migrate/20181124185210_create_friend_gifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181124185210"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/bin/rake:23
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 14:05:35 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (3.1ms)
+  Rendered friends/new.html.erb within layouts/application (7.1ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 70ms (Views: 33.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 14:06:20 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.7ms)
+  Rendered friends/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 55364ms (Views: 30.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/3/friends/new" for 127.0.0.1 at 2018-11-24 14:07:18 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.1ms)
+  Rendered friends/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 70910ms (Views: 21.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:08:32 -0500
+Processing by SessionsController#new as HTML
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:08:32 -0500
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered layouts/_navigation.html.erb (135.0ms)
+Completed 500 Internal Server Error in 169ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `logged_in?' for #<#<Class:0x007fb02d931590>:0x007fb02d9296b0>
+Did you mean?  logger?):
+    2:       <div class="nav">
+    3:         
+    4:         <br>
+    5:         <% if !logged_in? %>
+    6:           <a class="navbar-brand" href="<%=new_user_path%>">Sign Up</a>
+    7:           <a class="navbar-brand" href="<%= signin_path %>">Log In</a>
+    8:         <% else %>
+  
+app/views/layouts/_navigation.html.erb:5:in `_app_views_layouts__navigation_html_erb___2645983652418051664_70197305397440'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___217472535589872323_70197327715220'
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  Rendered layouts/_navigation.html.erb (151.6ms)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `logged_in?' for #<#<Class:0x007fb03039b128>:0x007fb030399260>
+Did you mean?  logger?):
+    2:       <div class="nav">
+    3:         
+    4:         <br>
+    5:         <% if !logged_in? %>
+    6:           <a class="navbar-brand" href="<%=new_user_path%>">Sign Up</a>
+    7:           <a class="navbar-brand" href="<%= signin_path %>">Log In</a>
+    8:         <% else %>
+  
+app/views/layouts/_navigation.html.erb:5:in `_app_views_layouts__navigation_html_erb___2645983652418051664_70197305397440'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___217472535589872323_70197327715220'
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:08:46 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 37ms (Views: 16.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:08:48 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 26ms (Views: 24.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-11-24 14:08:53 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tHWSAHtqsTeTjVy6tNZdRlD8l9IptmVxGWxrDXkDXcvlx4Vb9NzgSIOn++bh99CUlkmZiBNafpCIeB4KFWH9vg==", "email"=>"e@mail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:13
+Redirected to http://localhost:3000/signin
+Completed 302 Found in 60ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:08:53 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-11-24 14:09:08 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7p+KEcgxjf+t7ANafVbintQv+uG79yDgyJGXcmN0laACk30Z/2Np2bGLuF8WpgRwEykb94aUMfq09Y8GIqx6ZA==", "email"=>"cjwood032@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:13
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 58ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:09:08 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (9.5ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `klass' for nil:NilClass
+Did you mean?  class):
+     7: <%end%><br>
+     8: <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
+     9: 
+    10: <br><% if @user.gifts.size ==0%>
+    11:     You have not purchased any gifts yet!
+    12: <%else%>
+    13:     <%= render partial: "gifts/table"%>
+  
+app/views/users/show.html.erb:10:in `_app_views_users_show_html_erb___1455674630159394800_70197321254240'
+Started GET "/users/1/friends.new" for 127.0.0.1 at 2018-11-24 14:09:25 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/friends.new"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:09:32 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3@global/gems/did_you_mean-1.0.0/lib/did_you_mean/core_ext/name_error.rb:10
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/friends_controller.rb:13
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.3ms)
+  Rendered friends/new.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 139040ms (Views: 21.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:11:53 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  [1m[36mFriend Load (0.5ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/friends_controller.rb:13
+  [1m[36mGift Load (0.5ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts"[0m
+  ↳ app/controllers/friends_controller.rb:13
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.5ms)
+  Rendered friends/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 264669ms (Views: 23.0ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:16:37 -0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (4.4ms)
+  Rendered friends/new.html.erb within layouts/application (8.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 500 Internal Server Error in 83431ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `flash' for #<ActionDispatch::Request:0x007f96fb2ed8f0>):
+    13:       <%= render 'layouts/navigation' %>
+    14:       <br>
+    15:       <div id="errors">
+    16:         <% if flash.any? %>
+    17:             <% flash.each do |key, value| %>
+    18:               <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+    19:             <% end %>
+  
+app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__3810363197338656200_70143186840240'
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:18:44 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (2.6ms)
+  Rendered friends/new.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 500 Internal Server Error in 227ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `flash' for #<ActionDispatch::Request:0x007fb653b8ca48>):
+    13:       <%= render 'layouts/navigation' %>
+    14:       <br>
+    15:       <div id="errors">
+    16:         <% if flash.any? %>
+    17:             <% flash.each do |key, value| %>
+    18:               <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+    19:             <% end %>
+  
+app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__1926880333654079774_70210561129180'
+Started GET "/" for 127.0.0.1 at 2018-11-24 14:18:47 -0500
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `flash' for #<ActionDispatch::Request:0x007fb656ba86c8>):
+    13:       <%= render 'layouts/navigation' %>
+    14:       <br>
+    15:       <div id="errors">
+    16:         <% if flash.any? %>
+    17:             <% flash.each do |key, value| %>
+    18:               <div class="alert alert-info alert-<%= key %>"><%= value %></div>
+    19:             <% end %>
+  
+app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__1926880333654079774_70210557742680'
+Started GET "/" for 127.0.0.1 at 2018-11-24 14:19:24 -0500
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 20ms (Views: 16.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:19:33 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_navigation.html.erb (0.4ms)
+Completed 200 OK in 20ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-11-24 14:19:37 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qAbglaVd1qkF8nPzZzU8Nt6DyGQLjwHepzPTXNWsKJceTYBdDjNZtMd5CBZ6qy8JllM4P5V2HrDiR47/LBLRvQ==", "email"=>"cjwood032@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:13
+Redirected to 
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `flash' for #<ActionDispatch::Request:0x007fb65a918260>):
+  
+app/controllers/sessions_controller.rb:17:in `create'
+Started POST "/signin" for 127.0.0.1 at 2018-11-24 14:21:42 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qAbglaVd1qkF8nPzZzU8Nt6DyGQLjwHepzPTXNWsKJceTYBdDjNZtMd5CBZ6qy8JllM4P5V2HrDiR47/LBLRvQ==", "email"=>"cjwood032@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:13
+Redirected to 
+Completed 500 Internal Server Error in 123ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `flash' for #<ActionDispatch::Request:0x007fb653ea0b80>):
+  
+app/controllers/sessions_controller.rb:17:in `create'
+Started GET "/signin" for 127.0.0.1 at 2018-11-24 14:22:02 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 41ms (Views: 22.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-11-24 14:22:07 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uXToGTE9V7gM2TQBprsn+u7RScCe0ovKm24vINw2AV23qhyv2WvoU4ZO9fyHZ2toi1rwQgZFojAMv+Xy3oWbsg==", "email"=>"cjwood032@gmail.com", "password"=>"[FILTERED]", "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:13
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 57ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:22:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (29.1ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `klass' for nil:NilClass
+Did you mean?  class):
+     7: <%end%><br>
+     8: <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
+     9: 
+    10: <br><% if @user.gifts.size ==0%>
+    11:     You have not purchased any gifts yet!
+    12: <%else%>
+    13:     <%= render partial: "gifts/table"%>
+  
+app/views/users/show.html.erb:10:in `_app_views_users_show_html_erb___3521680972974752167_70210558034560'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:30:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (11.1ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `klass' for nil:NilClass
+Did you mean?  class):
+     7: <%end%><br>
+     8: <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
+     9: 
+    10: <!-- <br><% if @user.gifts.size ==0%>
+    11:     You have not purchased any gifts yet!
+    12: <%else%>
+    13:     <%= render partial: "gifts/table"%>
+  
+app/views/users/show.html.erb:10:in `_app_views_users_show_html_erb___3521680972974752167_70210526027240'
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:31:09 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 38ms (Views: 34.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2018-11-24 14:31:11 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 22ms (Views: 18.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-24 14:31:26 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:12
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (1.2ms)
+  Rendered friends/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 42ms (Views: 24.4ms | ActiveRecord: 0.6ms)
+
+

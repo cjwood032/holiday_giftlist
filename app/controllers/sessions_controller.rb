@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
         current_user = @user
         if @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
-          redirect_to user_path(@user), notice: "Welcome back!"
+          redirect_to user_path(@user)
         else
-          redirect_to signin_path, notice: "Name or password is incorrect"
+          redirect_to signin_path
         end
       end
 

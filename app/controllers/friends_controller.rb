@@ -7,6 +7,11 @@ class FriendsController < ApplicationController
         @friend = Friend.find(params[:id])
         render json: @friend, status: 200
     end
+    def new
+        @friend=Friend.new
+        @user=User.find(params[:user_id])
+        #binding.pry
+    end
     def create
         @friend = Friend.create(friend_params)
         render json: @friend, status: 200

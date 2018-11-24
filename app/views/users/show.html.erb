@@ -7,8 +7,3 @@
 <%end%><br>
 <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
 
-<br><% if @user.gifts.size ==0%>
-    You have not purchased any gifts yet!
-<%else%>
-    <%= render partial: "gifts/table"%>
-<%end%><br>
