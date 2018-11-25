@@ -9,11 +9,12 @@ class FriendsController < ApplicationController
     end
     def new
         @friend=Friend.new
-        @user=User.find(params[:user_id])
         #binding.pry
     end
     def create
         @friend = Friend.create(friend_params)
+        @friend.user=current_user
+        @friend.save
         render json: @friend, status: 200
     end
     def update
@@ -28,6 +29,6 @@ class FriendsController < ApplicationController
     end
     private
     def friend_params
-        params.require(:friend).permit(:body) #double check after creating form
+        params.require(:friend).permit(:name) 
     end
 end

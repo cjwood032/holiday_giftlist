@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
-  get "/logout" => "sessions#destroy"
+  post "/logout" => "sessions#destroy"
   get "/signin", to: "sessions#new"
   post '/signin' => 'sessions#create'
   resources :users, only: [:new, :create, :show] do
