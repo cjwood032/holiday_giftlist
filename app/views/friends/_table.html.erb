@@ -8,7 +8,7 @@
     <% friends.find_each do |friend| %>
       <tr>
         
-        <td><a href="#" data-id="<%= deck.id %>" class="see-deck"><%= deck.name %></a></td>
+        <td><a href="#" data-id="<%= friend.id %>" class="see-friend"><%= friend.name %></a></td>
         <td><%= friend.gift_status %></td>
         <td><%= friend.amount_spent %></td>
         <td><%= link_to "detailed view", user_friend_path(friend) %></td>

@@ -1,6 +1,8 @@
 class FriendsController < ApplicationController
     def index
-        @friends=Friend.ApplicationController
+        #binding.pry
+        user=User.find(params[:user_id])
+        @friends=user.friends
         render json: @friends, status:200
     end
     def show
