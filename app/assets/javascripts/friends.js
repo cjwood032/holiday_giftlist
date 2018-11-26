@@ -33,7 +33,8 @@ $(function() {
       e.preventDefault()
       let userId = $(e.target).attr("data-user")
       let friendId = $(e.target).attr("data-id")
-      fetch(`${friendId}/next.json`)
+      //debugger
+      fetch(`/users/${userId}/friends/${friendId}/next.json`)
       .then(res => res.json())
       .then(friend => {
         showFriend(friend.user.id, friend.id)
@@ -90,8 +91,8 @@ $(function() {
   function Friend(friend) {
     this.id = friend.id
     this.name = friend.name
-    this.gift_purchased = friend.gift_purchased
-    this.purchase_amount = friend.purchase_amount
+    this.gift_status = friend.gift_status
+    this.amount_spent = friend.amount_spent
     this.userId = friend.user.id
 
   }
@@ -99,9 +100,10 @@ $(function() {
   Friend.prototype.formatShow = function(){
     let friendHtml = `
     <h3>Name: ${this.name}</h3><br>
-    <p><strong>Gift Purchased? </strong>${this.gift_purchased}</p>
-    <p><strong>Total: </strong>$${this.purchase_amount}</p>
-    <p><a href="/users/${this.userId}/friends/${this.id}/edit  rel="nofollow"">Edit Friend</a> <a href="/users/${this.userId}/friends">Back to friends list</a></p><br>
+    <h5><a href="/users/${this.userid}/friends/${this.id}/gifts/new">Add Gifts</a>||<a href="/users/${this.userid}/friends/${this.id}/gifts">Giftlist</a></h5>
+    <p><strong>Gift Purchased: </strong>${this.gift_status}</p>
+    <p><strong>Amount: </strong>${this.amount_spent}</p>
+    <p><a href="/users/${this.userId}/friends/${this.id}/edit ">Edit Friend</a> </p><br>
     <button class="next-friend" data-user="${this.userId}" data-id="${this.id}">Next</button>
     `
     return friendHtml

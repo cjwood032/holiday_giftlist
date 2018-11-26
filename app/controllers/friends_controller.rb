@@ -8,6 +8,7 @@ class FriendsController < ApplicationController
             format.json {render json: @friends, status:200}
         end
     end
+
     def show
         @friend = Friend.find(params[:id])
         respond_to do |format|
@@ -15,26 +16,37 @@ class FriendsController < ApplicationController
             format.html 
         end
     end
+    def next
+        @friend = Friend.find(params[:id])
+        #binding.pry
+        @next_friend=Friend.find(@friend.id.next)
+        render json:@next_friend
+    end
     def new
         @friend=Friend.new
-        #binding.pry
     end
+
     def create
         @friend = Friend.create(friend_params)
         @friend.user=current_user
+        @friend.gift_status="No Gift"
+        @friend.amount_spent=0
         @friend.save
         render json: @friend, status: 200
     end
+
     def update
         @friend = Friend.find(params[:id])
         @friend.update(friend_params)
         render json: @friend, status: 200
     end
+
     def destroy
         @friend = Friend.find(params[:id])
         @friend.delete
         render json: {friendId: @friend.id}
     end
+
     private
     def friend_params
         params.require(:friend).permit(:name) 

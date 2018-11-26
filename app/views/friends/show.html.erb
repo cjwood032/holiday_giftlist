@@ -1,2 +1,6 @@
 <h3><%=@friend.name%></h3>
-<h4><%=link_to "add gifts", user_friend_gifts_new_path(current_user, @friend)%>||<%=link_to "see giftlist", user_friend_gifts_path(current_user, @friend)%> </h4>
+<h5><%=link_to "add gifts", user_friend_gifts_new_path(current_user, @friend)%>||<%=link_to "see giftlist", user_friend_gifts_path(current_user, @friend)%> </h5>
+<p><strong>Gift Purchased: </strong><%=@friend.gift_status%></p>
+<p><strong>Amount: </strong><%=@friend.amount_spent%></p>
+<%=link_to "Edit Friend", edit_user_friend_path(current_user, @friend)%>
+<button class="next-friend" data-user=<%=@friend.user_id%> data-id=<%=@friend.id%>>Next</button>

@@ -3,7 +3,7 @@
 <br><% if @user.friends.size ==0%>
     You need to add friends!
 <%else%>
-    <%= render partial: "friends/table", locals: {friends: @user.friends}%>
+    Put a small table of people who still need gifts?
 <%end%><br>
 <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
 
