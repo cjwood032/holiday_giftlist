@@ -1,0 +1,2 @@
+<h3><%=@friend.name%></h3>
+<h4><%=link_to "add gifts", user_friend_gifts_new_path(current_user, @friend)%>||<%=link_to "see giftlist", user_friend_gifts_path(current_user, @friend)%> </h4>

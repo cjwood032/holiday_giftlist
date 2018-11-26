@@ -3,7 +3,7 @@
       <td><strong>Name</strong></td>
       <td><strong>Gift Purchased</strong></td>
       <td><strong>Amount Spent</strong></td>
-      <td><strong>See Wishlist</strong></td>
+      <td><strong>See Friend</strong></td>
     </tr>
     <% friends.find_each do |friend| %>
       <tr>
@@ -11,7 +11,7 @@
         <td><a href="#" data-id="<%= friend.id %>" class="see-friend"><%= friend.name %></a></td>
         <td><%= friend.gift_status %></td>
         <td><%= friend.amount_spent %></td>
-        <td><%= link_to "detailed view", user_friend_path(friend) %></td>
+        <td><a href="#" data-user= "<%=user.id %>" data-id="<%= friend.id %>" class="show-friend">See Friend</a></td>
 
       </tr>
     <% end %>

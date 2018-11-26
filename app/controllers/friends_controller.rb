@@ -3,11 +3,17 @@ class FriendsController < ApplicationController
         #binding.pry
         user=User.find(params[:user_id])
         @friends=user.friends
-        render json: @friends, status:200
+        respond_to do |format|
+            format.html {:index}
+            format.json {render json: @friends, status:200}
+        end
     end
     def show
         @friend = Friend.find(params[:id])
-        render json: @friend, status: 200
+        respond_to do |format|
+            format.json {render json: @friend, status: 200}
+            format.html 
+        end
     end
     def new
         @friend=Friend.new

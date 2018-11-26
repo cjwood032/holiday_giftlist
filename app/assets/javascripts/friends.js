@@ -97,7 +97,6 @@ $(function() {
   }
   
   Friend.prototype.formatShow = function(){
-    alert("found me!")
     let friendHtml = `
     <h3>Name: ${this.name}</h3><br>
     <p><strong>Gift Purchased? </strong>${this.gift_purchased}</p>

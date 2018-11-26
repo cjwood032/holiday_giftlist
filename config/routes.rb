@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :friends, only: [:show, :new, :create, :edit, :index, :update] do
       resources :gifts
       get 'gifts/:id/next', to: 'gifts#next'
+      get 'gifts/new', to: 'gifts#new'
     end
     get 'friends/:id/next', to: 'friends#next'
   end
