@@ -13,4 +13,5 @@
 //= require activestorage
 //= require jquery
 //= require jquery_ujs
-//= require friends.js
+
+//= require gifts.js

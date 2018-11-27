@@ -5,14 +5,15 @@ $(function() {
       
     $('#gift-form').submit(function(e) {
       e.preventDefault()
-      debugger
+      //debugger
       $.ajax({
         type: "POST",
         url: $(this).attr('action'),
         data: $(this).serialize(),
         dataType: "JSON",
         success: function(gift) {
-          showGift(gift.user.id, gift.id)
+            debugger
+          showGift(gift.user.id, gift.friend_id, gift.id)
         }
       })
     })
@@ -49,27 +50,28 @@ $(function() {
         giftColumns += newGift.giftColumn()
       })
       let giftHeadings = ["Name", "Link", "Price", "Buy?"]
-      $('#app-container').append(fillTable(giftHeadings, giftColumns))
+      $('#app-container').append(fillGameTable(giftHeadings, giftColumns))
     })
   }
   
-  const fillTable = (headings, columns) => {
-    return makeTable(headings) + columns + "</table>"
+  const fillGameTable = (headings, columns) => {
+    return makeGameTable(headings) + columns + "</table>"
   }
   
   const showGift = (userId, friendId, giftId) => {
+      debugger
     history.pushState(null, null, `/users/${userId}/friends/${friendId}/gifts/${giftId}`)
     fetch(`/users/${userId}/friends/${friendId}/gifts/${giftId}.json`)
     .then(res => res.json())
     .then(gift => {
       $('#app-container').html(`<h5>Gift ${giftId}</h5><br>`)
       let newGift = new Gift(gift)
-      let giftHtml = newGift.formatShow()
+      let giftHtml = newGift.formatGameShow()
       $('#app-container').append(giftHtml)
     })
   }
   
-  const makeTable = (headers) => {
+  const makeGameTable = (headers) => {
     let table = "<table class='table'><tr>"
     headers.forEach((header) => { table += `<td><strong>${header}</strong></td>`})
     table += "</tr>"
@@ -89,10 +91,9 @@ $(function() {
 
   }
   
-  Gift.prototype.formatShow = function(){
+  Gift.prototype.formatGameShow = function(){
     let giftHtml = `
     <h3>Name: ${this.name}</h3><br>
-    <h5><a href="/users/${this.userId}/friends/${this.id}/gifts/new">Add Gifts</a>||<a href="/users/${this.userid}/friends/${this.id}/gifts">Giftlist</a></h5>
     <p><strong>Link: </strong>${this.link}</p>
     <p><strong>Price: </strong>${this.price}</p>
     <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}edit ">Edit</a> </p><br>

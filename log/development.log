@@ -19703,3 +19703,1231 @@ Did you mean?  friends
                friends=):
   
 app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends" for 127.0.0.1 at 2018-11-27 17:28:00 -0500
+Processing by FriendsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:4
+  Rendering friends/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/helpers/friends_helper.rb:3
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."user_id" = ? ORDER BY "friends"."id" ASC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1000]]
+  ↳ app/views/friends/_table.html.erb:8
+  Rendered friends/_table.html.erb (5.2ms)
+  Rendered friends/index.html.erb within layouts/application (14.1ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 104ms (Views: 85.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application-3096973aa863432fa098ac0c8ad6e3da22c2ae8e775e0f3a9e3407d2effe650e.js" for 127.0.0.1 at 2018-11-27 17:28:00 -0500
+Started GET "/users/1/friends/new" for 127.0.0.1 at 2018-11-27 17:28:02 -0500
+Processing by FriendsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  Rendering friends/new.html.erb within layouts/application
+  Rendered friends/_form.html.erb (2.1ms)
+  Rendered friends/new.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 37ms (Views: 31.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/1/friends" for 127.0.0.1 at 2018-11-27 17:28:05 -0500
+Processing by FriendsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+sE9AwVnQQHKyw+eaHGE61QAd4jOD4xGa2KhQYCsVG/Coh1KouCar8YzYIKvK3VfAIfcCxUOZmRSWcFYU/znkA==", "friend"=>{"name"=>"Another Friend"}, "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:35
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/friends_controller.rb:35
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/friends_controller.rb:39
+  [1m[36mFriend Create (0.5ms)[0m  [1m[32mINSERT INTO "friends" ("name", "user_id", "created_at", "updated_at", "gift_status", "amount_spent") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Another Friend"], ["user_id", 1], ["created_at", "2018-11-27 22:28:05.821431"], ["updated_at", "2018-11-27 22:28:05.821431"], ["gift_status", "No Gift"], ["amount_spent", 0]]
+  ↳ app/controllers/friends_controller.rb:39
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/friends_controller.rb:39
+[active_model_serializers]   [1m[36mGift Load (0.3ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" INNER JOIN "friend_gifts" ON "gifts"."id" = "friend_gifts"."gift_id" WHERE "friend_gifts"."friend_id" = ?[0m  [["friend_id", 17]]
+[active_model_serializers]   ↳ app/controllers/friends_controller.rb:40
+[active_model_serializers] Rendered FriendSerializer with ActiveModelSerializers::Adapter::Attributes (25.14ms)
+Completed 200 OK in 38ms (Views: 29.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/1/friends/17.json" for 127.0.0.1 at 2018-11-27 17:30:04 -0500
+Processing by FriendsController#show as JSON
+  Parameters: {"user_id"=>"1", "id"=>"17"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mFriend Load (0.4ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:13
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/friends_controller.rb:15
+[active_model_serializers]   [1m[36mGift Load (0.1ms)[0m  [1m[34mSELECT "gifts".* FROM "gifts" INNER JOIN "friend_gifts" ON "gifts"."id" = "friend_gifts"."gift_id" WHERE "friend_gifts"."friend_id" = ?[0m  [["friend_id", 17]]
+[active_model_serializers]   ↳ app/controllers/friends_controller.rb:15
+[active_model_serializers] Rendered FriendSerializer with ActiveModelSerializers::Adapter::Attributes (6.36ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/friends" for 127.0.0.1 at 2018-11-27 17:30:21 -0500
+Processing by FriendsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:4
+  Rendering friends/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/helpers/friends_helper.rb:3
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."user_id" = ? ORDER BY "friends"."id" ASC LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1000]]
+  ↳ app/views/friends/_table.html.erb:8
+  Rendered friends/_table.html.erb (2.8ms)
+  Rendered friends/index.html.erb within layouts/application (7.3ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 89ms (Views: 83.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application-2b04f2235d270eb9e85c1270eee4d41cb31bbf399c72fade2b4375079e6b62a2.js" for 127.0.0.1 at 2018-11-27 17:30:21 -0500
+Started GET "/users/1/friends/1" for 127.0.0.1 at 2018-11-27 17:30:27 -0500
+Processing by FriendsController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friends_controller.rb:13
+  Rendering friends/show.html.erb within layouts/application
+  Rendered friends/show.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 24ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:30:29 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.1ms)
+  Rendered gifts/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 28ms (Views: 22.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:30:40 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (1.8ms)
+  Rendered gifts/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 24ms (Views: 18.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:31:03 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"a8rc464L8NNLtwV7dLH2iXDcc2vvASBY9/5DUDVJ3/1TqfyqCYwrfUdPamez6wc9JFvY6DQAynrOxSNJ5hlsAg==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (7.84ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffadac19198>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:31:08 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.0ms)
+  Rendered gifts/new.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 83ms (Views: 72.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-640b9bf729b0cce249a426085a74c0747496579cb2f4deadf0959d8b9bdbddea.js" for 127.0.0.1 at 2018-11-27 17:31:08 -0500
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:31:14 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.4ms)
+  Rendered gifts/new.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 108ms (Views: 103.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application-95a8e2b95c79234c60e19547d4cdbdb3c02f1ab5e9cfd70b677d09707b240cda.js" for 127.0.0.1 at 2018-11-27 17:31:15 -0500
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:31:19 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bRVtr1JWIPRQLMgUtmOmQl2NrdM2DD0q0VrDcV7/4r9Vdk3m9dH7WlzUpwhxOVf2CQoGUO0N1wjoYaNoja9RQA==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (7.93ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffae157fbf0>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:31:57 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.2ms)
+  Rendered gifts/new.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 34ms (Views: 28.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:33:21 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VstbvXB3A1pqg3GjyBbB1skE1LLPGarlK049rvf96hxuqHv01/DY9GZ7Hr8PTDBinYN/MRQYQMcSdV23JK1Z4w==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (6.31ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffae2aa33d8>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:34:22 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VstbvXB3A1pqg3GjyBbB1skE1LLPGarlK049rvf96hxuqHv01/DY9GZ7Hr8PTDBinYN/MRQYQMcSdV23JK1Z4w==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (9.33ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffae2a38498>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:35:49 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VstbvXB3A1pqg3GjyBbB1skE1LLPGarlK049rvf96hxuqHv01/DY9GZ7Hr8PTDBinYN/MRQYQMcSdV23JK1Z4w==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (6.58ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffade4d4ac8>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:37:43 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VstbvXB3A1pqg3GjyBbB1skE1LLPGarlK049rvf96hxuqHv01/DY9GZ7Hr8PTDBinYN/MRQYQMcSdV23JK1Z4w==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (6.66ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffada9eb4e8>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:37:59 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VstbvXB3A1pqg3GjyBbB1skE1LLPGarlK049rvf96hxuqHv01/DY9GZ7Hr8PTDBinYN/MRQYQMcSdV23JK1Z4w==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (7.1ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffade56bae0>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:38:06 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  Rendering gifts/new.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/gifts/_form.html.erb:10
+  Rendered gifts/_form.html.erb (93.4ms)
+  Rendered gifts/new.html.erb within layouts/application (96.7ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 125ms (Views: 118.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 17:38:18 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wGw3LptEjJln4PnWY08/y8MkkFvc1e9MyITA7E55Pg/4DxdnPMNXN2sYlsqkFc5/l6M72AfUBW7xv6D1nSmN8A==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01", "friend_ids"=>["", "2"]}, "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Unpermitted parameter: :friend_ids
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (8.76ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffad96470b8>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:39:08 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  Rendering gifts/new.html.erb within layouts/application
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/gifts/_form.html.erb:10
+  Rendered gifts/_form.html.erb (21.9ms)
+  Rendered gifts/new.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 79ms (Views: 44.7ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 17:39:15 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+3ZFgJXNY1ep3AFyZiEj5CgA54rJtxjeVXRQAfhuZPTDFWXJMkq4+aUkbm6he9JQfIdMCRK28vxsTzAYKz7XCw==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01", "friend_ids"=>["", "2"]}, "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Unpermitted parameter: :friend_ids
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (9.31ms)
+Completed 200 OK in 17ms (Views: 11.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:40:14 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  Rendering gifts/new.html.erb within layouts/application
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/gifts/_form.html.erb:10
+  Rendered gifts/_form.html.erb (24.2ms)
+  Rendered gifts/new.html.erb within layouts/application (27.5ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 69ms (Views: 43.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users/1/friends/null/gifts/undefined.json" for 127.0.0.1 at 2018-11-27 17:40:14 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"null", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.4ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 295ms (ActiveRecord: 0.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=undefined):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 17:40:33 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GVFLs2DzWV03+m93LCQhCz9KnYmjnZfHYmif2LI0sFIhMmv6x3SC8zsCAGvrftC/a802CnicfeVbU//BYWQDrQ==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01", "friend_ids"=>["", "2", "4"]}, "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Unpermitted parameter: :friend_ids
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (9.33ms)
+Completed 200 OK in 18ms (Views: 12.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:44:15 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  Rendering gifts/new.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/gifts/_form.html.erb:10
+  Rendered gifts/_form.html.erb (14.5ms)
+  Rendered gifts/new.html.erb within layouts/application (17.4ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `friend_id' for #<Friend:0x007ffadb821af8>
+Did you mean?  friend_gift_ids):
+     7:     <%= f.label :price %>:
+     8:     <%= f.number_field :price, min: 0.01, max: 999999.99, step: 0.01 %><br>
+     9:     Gift for 
+    10:     <%= f.collection_check_boxes(:friend_ids, @user.friends, :friend_id, :name) %>
+    11:     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    12:     
+    13:     <%= f.submit%>
+  
+app/views/gifts/_form.html.erb:10:in `block in _app_views_gifts__form_html_erb__37893554360180175_70357677786320'
+app/views/gifts/_form.html.erb:1:in `_app_views_gifts__form_html_erb__37893554360180175_70357677786320'
+app/views/gifts/new.html.erb:5:in `_app_views_gifts_new_html_erb___1750937783936721931_70357700886720'
+Started GET "/users/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:44:25 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  Rendering gifts/new.html.erb within layouts/application
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT "friends".* FROM "friends" WHERE "friends"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/views/gifts/_form.html.erb:10
+  Rendered gifts/_form.html.erb (5.3ms)
+  Rendered gifts/new.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 46ms (Views: 40.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 17:44:32 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+JBGcxyGXIkWWQAN5gkMo0hsGTDrrpYIWlpcrU0Ji2jA82Y6uwGHJxqhbxEhU/0XHOuyszCvfCpjYTy0nlk4lw==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01", "friend_id"=>["", "2", "3"]}, "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+Unpermitted parameter: :friend_id
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (14.22ms)
+Completed 200 OK in 18ms (Views: 14.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:46:33 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.5ms)
+  Rendered gifts/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 31ms (Views: 23.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:46:34 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.9ms)
+  Rendered gifts/new.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 42ms (Views: 36.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:46:40 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"X+BrDbNo+cgk/IiU3UFHjnvPZZEe3GJDGqGo+M0R+SRng0tEFO8iZigE54gaG7Y6L0jOEsXdiGEjmsjhHkFK2w==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend"=>"#<Friend:0x007ffade329778>", "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (8.86ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/friends/null/gifts/undefined.json" for 127.0.0.1 at 2018-11-27 17:46:55 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"null", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.1ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=undefined):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:47:07 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.4ms)
+  Rendered gifts/new.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 33ms (Views: 28.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:47:39 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (1.0ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (4.0ms)
+  Rendered gifts/new.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 67ms (Views: 25.3ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:47:44 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0FYLsafOGEztH9hc7RgotBIoUUZztWNiKg8EO1UUOGToNSv4AEnD4uHnt0AqQtkARq/6xai0iUATNGQihkSLmw==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend"=>"#<Friend:0x007ffae2ae21f0>", "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (12.12ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.0ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffae28d3968>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:48:08 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.3ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (4.0ms)
+  Rendered gifts/new.html.erb within layouts/application (7.4ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 98ms (Views: 36.1ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:48:15 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G7sLL4Xxpb7pRJU+/aOIvTcbZQ3NNpGmso2GVixuSoIj2CtmInZ+EOW8+iI6+XkJY5zOjhY3e4SLtuZP/z75fQ==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.02"}, "friend"=>"#<Friend:0x007ffadbdb1180>", "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (6.08ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffadba2bee8>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:53:51 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.5ms)
+  Rendered gifts/new.html.erb within layouts/application (7.1ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 56ms (Views: 25.1ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:53:56 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UmvLBv8WpWQXRacJlRfUmrtInVSwTj0FdLr+2NWWjHBqCOtPWJF+yhu9yBVSTSUu788212tP1ydNgZ7BBsY/jw==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend"=>"#<Friend:0x007ffae11b9908>", "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (6.94ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffade6d82e8>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:55:58 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.3ms)
+  Rendered gifts/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 36ms (Views: 28.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:56:05 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FmDHWijqmWtwP1pv2cA9GWlcJSDk4iqOEgaIxAxuzs8uA+cTj21CxXzHNXMemsytPduOoz/jwKwrPejd3z59MA==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend"=>"#<Friend:0x007ffae249ae50>", "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (5.84ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffae0d63408>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:56:23 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (1.9ms)
+  Rendered gifts/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 29ms (Views: 22.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:56:24 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.4ms)
+  Rendered gifts/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navigation.html.erb (0.5ms)
+Completed 200 OK in 24ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:56:24 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.1ms)
+  Rendered gifts/new.html.erb within layouts/application (4.1ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 28ms (Views: 22.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:56:24 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.6ms)
+  Rendered gifts/new.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 30ms (Views: 25.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/1/friends/1/gifts" for 127.0.0.1 at 2018-11-27 17:56:29 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3JtV3A3EJ18tJW9L/eHdd/Tz0Zrcz6QJ/j++ZYMWFJfk+HWVqkP88SHdAFc6uyzDoHR6GQfOTivHBN58UEanaA==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend"=>"#<Friend:0x007ffade404800>", "user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (5.74ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffadae72ac0>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 17:59:48 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.2ms)
+  Rendered gifts/new.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 69ms (Views: 30.1ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 17:59:52 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jsdZgKOt+UP0lgZg+r/jsLamFldt7Vp45oxdBlkBBky2pHnJBCoi7fhuaXw95RIE4iG91LbssFrftz0filG1sw==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (7.38ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffae0bc4750>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:01:35 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.9ms)
+  Rendered gifts/new.html.erb within layouts/application (6.7ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 72ms (Views: 31.1ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:01:40 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"O4xwnZe4rq7rlahnnzaZ5HToh0JLgGfUL+QRtOcI9r0D71DUMD91AOdtx3tYbGhQIG8swZCBjfYW33GtNFhFQg==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (4.74ms)
+Completed 200 OK in 12ms (Views: 6.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/friends/null/gifts/undefined.json" for 127.0.0.1 at 2018-11-27 18:03:23 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"null", "id"=>"undefined"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.1ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 18ms (ActiveRecord: 1.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=undefined):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/null/gifts/undefined" for 127.0.0.1 at 2018-11-27 18:03:27 -0500
+Processing by GiftsController#show as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"null", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.2ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=undefined):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:03:37 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.8ms)
+  Rendered gifts/new.html.erb within layouts/application (10.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 64ms (Views: 37.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:03:39 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.9ms)
+  Rendered gifts/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 40ms (Views: 33.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:03:47 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k3+uCTVrLpWYNnImmN8N3bUTVIuxvK1dSBhPwQohI7qrHI5Akuz1O5TOHTpfhfxp4ZT/CGq9R39xIy/Y2XGQRQ==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend"=>"#<Friend:0x007ffadf40b7a8>", "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (8.14ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.3ms)
+
+
+  
+NoMethodError (undefined method `friend' for #<Gift:0x007ffad9544300>
+Did you mean?  friends
+               friends=):
+  
+app/controllers/gifts_controller.rb:19:in `create'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:04:46 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.5ms)
+  Rendered gifts/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 59ms (Views: 25.3ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:05:08 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TS7Eto0Ngir56IA5Elr+HKPJCMCFYNjp+SRe98A6+Tp1TeT/KopZhPUQ7yXVAA+o906jQ15hMsvAHz7uE2pKxQ==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (6.08ms)
+Completed 200 OK in 14ms (Views: 8.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/null/gifts/undefined.json" for 127.0.0.1 at 2018-11-27 18:05:58 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"null", "id"=>"undefined"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.2ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=undefined):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:06:02 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.6ms)
+  Rendered gifts/new.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 91ms (Views: 81.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-a94a0f3091d8abedc0f2ff7d3d2f9a80427a517d4d4213f4ceb3bff3c41cf977.js" for 127.0.0.1 at 2018-11-27 18:06:03 -0500
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:06:06 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.2ms)
+  Rendered gifts/new.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 32ms (Views: 27.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:06:07 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.0ms)
+  Rendered gifts/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 30ms (Views: 24.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:06:10 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d8D5V16PPuN+oWG2L1iozpUxlL4rYvwPzPvs9eNeStZPo9ke+QjlTXJZDqroAll6wbY/PfBjFi31wIzsMA75KQ==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (1.8ms)
+Completed 200 OK in 7ms (Views: 2.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/null.json" for 127.0.0.1 at 2018-11-27 18:06:16 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"1", "id"=>"null"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.1ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=null):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/1/gifts/null" for 127.0.0.1 at 2018-11-27 18:06:48 -0500
+Processing by GiftsController#show as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1", "id"=>"null"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.2ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 5ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=null):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:06:55 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.9ms)
+  Rendered gifts/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 78ms (Views: 72.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application-8fc7f8dbec3f8d7083764607b5a30eb2bd47a44c62fe01a2f99eeabeb39a8c67.js" for 127.0.0.1 at 2018-11-27 18:06:55 -0500
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:06:55 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.0ms)
+  Rendered gifts/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 27ms (Views: 21.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:06:59 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N2JEAtUawoJ4dJ/kljQ08VO5BcZhXZzMLC/4YK5QyAcPAWRLcp0ZLHSM8PhRbsVFBz6uRbpcdu4VFJh5fQB7+A==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (1.24ms)
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/null.json" for 127.0.0.1 at 2018-11-27 18:07:36 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"1", "id"=>"null"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.1ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=null):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:07:38 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.1ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (2.5ms)
+  Rendered gifts/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 35ms (Views: 25.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:07:42 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wKehitQt7F3Bq3LxWQL07x3fECtMAX6dQ7Z52rAglYL4xIHDc6o3881THe2eWAVbSVi7qJcAlL96jRnDY3AmfQ==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:19
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (1.35ms)
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/friends/1/gifts/new" for 127.0.0.1 at 2018-11-27 18:08:08 -0500
+Processing by GiftsController#new as HTML
+  Parameters: {"user_id"=>"1", "friend_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:3
+  [1m[36mFriend Load (0.2ms)[0m  [1m[34mSELECT  "friends".* FROM "friends" WHERE "friends"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:6
+  Rendering gifts/new.html.erb within layouts/application
+  Rendered gifts/_friendform.html.erb (3.5ms)
+  Rendered gifts/new.html.erb within layouts/application (7.8ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+Completed 200 OK in 98ms (Views: 42.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users/1/friends/1/gifts/null.json" for 127.0.0.1 at 2018-11-27 18:08:08 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"1", "id"=>"null"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.6ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+Completed 404 Not Found in 6ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Gift with 'id'=null):
+  
+app/controllers/gifts_controller.rb:35:in `show'
+Started POST "/users/1/gifts" for 127.0.0.1 at 2018-11-27 18:08:14 -0500
+Processing by GiftsController#create as JSON
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KKjzc/Iu4DIIeLm9t8dLntVCQjBCtZ2eHNmzYH3+b/UQy9M6Vak7nASA1qFwnboqgcXps5m0d7wl4tN5rq7cCg==", "gift"=>{"name"=>"present", "link"=>"http://www.google.com", "price"=>"0.01"}, "friend_id"=>"1", "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/gifts_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/gifts_controller.rb:18
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:18
+  [1m[36mGift Create (0.3ms)[0m  [1m[32mINSERT INTO "gifts" ("user_id", "name", "link", "price", "created_at", "updated_at", "friend_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["name", "present"], ["link", "http://www.google.com"], ["price", 0], ["created_at", "2018-11-27 23:08:14.174838"], ["updated_at", "2018-11-27 23:08:14.174838"], ["friend_id", 1]]
+  ↳ app/controllers/gifts_controller.rb:18
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/gifts_controller.rb:18
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (3.2ms)
+Completed 200 OK in 15ms (Views: 5.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/friends/1/gifts/1.json" for 127.0.0.1 at 2018-11-27 18:08:25 -0500
+Processing by GiftsController#show as JSON
+  Parameters: {"user_id"=>"1", "friend_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18
+  [1m[36mGift Load (0.1ms)[0m  [1m[34mSELECT  "gifts".* FROM "gifts" WHERE "gifts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/gifts_controller.rb:35
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/gifts_controller.rb:37
+[active_model_serializers] Rendered GiftSerializer with ActiveModelSerializers::Adapter::Attributes (1.54ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.4ms)
+
+

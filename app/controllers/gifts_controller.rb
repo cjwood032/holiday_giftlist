@@ -12,10 +12,7 @@ class GiftsController< ApplicationController
         @gift = Gift.create(gift_params)
         @gift.user_id = params[:user_id]
         @gift.friend_id = params[:friend_id]
-        #binding.pry
-        #friends=params[:gift][:friend_ids].drop_while{|x| x==''}
-        #@gift.friends=friends.map{|x| Friend.find(x.to_i)}
-        #@gift.save
+        @gift.save
         render json: @gift, status: 200
     end
     def edit
