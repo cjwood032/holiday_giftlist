@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'gifts/new', to: 'gifts#new'
     end
     get 'friends/:id/next', to: 'friends#next'
+    post 'friends/:id/delete' => 'friends#delete'
   end
 
 

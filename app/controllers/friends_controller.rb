@@ -16,6 +16,11 @@ class FriendsController < ApplicationController
             format.html 
         end
     end
+
+    def edit
+        @friend = Friend.find(params[:id])
+    end
+   
     def next
         @friend = Friend.find(params[:id])
         #binding.pry
@@ -41,10 +46,10 @@ class FriendsController < ApplicationController
         render json: @friend, status: 200
     end
 
-    def destroy
+    def delete
         @friend = Friend.find(params[:id])
         @friend.delete
-        render json: {friendId: @friend.id}
+        redirect_to user_friends_path
     end
 
     private

@@ -33,14 +33,15 @@ $(function() {
       e.preventDefault()
       let userId = $(e.target).attr("data-user")
       let friendId = $(e.target).attr("data-id")
-      //debugger
       fetch(`/users/${userId}/friends/${friendId}/next.json`)
       .then(res => res.json())
       .then(friend => {
         showFriend(friend.user.id, friend.id)
       })
     })
-  
+    $('#delete-friend').submit(function(e) {
+      alert('Friend Deleted')
+    })
   }
   
   const getFriends = (userId) => {
