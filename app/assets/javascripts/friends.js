@@ -39,9 +39,10 @@ $(function() {
         showFriend(friend.user.id, friend.id)
       })
     })
+    
     $('#delete-friend').submit(function(e) {
       alert('Friend Deleted')
-    })
+      })
   }
   
   const getFriends = (userId) => {
