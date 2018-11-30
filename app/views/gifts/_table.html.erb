@@ -1,0 +1,18 @@
+<table class="table">
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Link</strong></td>
+      <td><strong>Price</strong></td>
+      <td><strong>See Gift</strong></td>
+    </tr>
+    <% gifts.find_each do |gift| %>
+      <tr>
+        
+        <td><%= gift.name %></td>
+        <td><%= gift.link %></td>
+        <td><%= gift.price %></td>
+        <td><a href="#" data-user= "<%=user.id %>" data-friend="<%= friend.id %>" data-id="<%= gift.id %>" class="show-gift">See Gift</a></td>
+
+      </tr>
+    <% end %>
+  </table>

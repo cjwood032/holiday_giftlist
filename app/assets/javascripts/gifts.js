@@ -85,7 +85,7 @@ $(function() {
     this.name = gift.name
     this.link = gift.link
     this.price = gift.price
-    
+    debugger
     //this.buy
     this.userId = gift.user.id
 

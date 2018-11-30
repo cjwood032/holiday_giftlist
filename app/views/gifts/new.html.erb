@@ -1,6 +1,7 @@
-<h5> Found a gift!? </h5>
+
 <%if @friend%>
+    Gift for <%=@friend.name%>
     <%= render partial: "friendform", locals:{friend: @friend, gift: @gift, user: current_user}%>
 <%else%>
-<%= render partial: "form", locals:{gift: @gift, user: current_user}%>
+    <%= render partial: "form", locals:{gift: @gift, user: current_user}%>
 <%end%>

@@ -17,11 +17,13 @@ class GiftsController< ApplicationController
     end
     def edit
         @gift = Gift.find(params[:id])
+        binding.pry
     end
     def index
-        user=User.find(params[:user_id])
-        @friends=user.friends
-        @gifts=user.gifts
+        @user=User.find(params[:user_id])
+        binding.pry
+        @friends=@user.friends
+        @gifts=@user.gifts
         respond_to do |format|
             format.html {:index}
             format.json {render json: @gifts, status:200}
