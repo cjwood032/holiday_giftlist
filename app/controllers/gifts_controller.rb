@@ -12,16 +12,23 @@ class GiftsController< ApplicationController
         @gift = Gift.create(gift_params)
         @gift.user_id = params[:user_id]
         @gift.friend_id = params[:friend_id]
-        @gift.save
-        render json: @gift, status: 200
+        if @gift.save
+            friend=Friend.find(params[:friend_id])
+            friend.gifts<<@gift
+            friend.save
+            render json: @gift, status: 200
+        end
     end
     def edit
-        @gift = Gift.find(params[:id])
+        @gift = Gift.find(params[:id])  
         binding.pry
     end
     def index
         @user=User.find(params[:user_id])
-        binding.pry
+       
+        if params[:friend_id]
+           @friend=Friend.find(params[:friend_id]) 
+        end
         @friends=@user.friends
         @gifts=@user.gifts
         respond_to do |format|
