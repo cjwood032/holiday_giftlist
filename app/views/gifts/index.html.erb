@@ -1,1 +1,5 @@
-<%= user_gifts_table(current_user) %>
+<%if @friend%>
+    <%= user_gifts_table(current_user) %>
+<%else%>
+    <%= friend_selection(current_user) %>
+<%end%>
