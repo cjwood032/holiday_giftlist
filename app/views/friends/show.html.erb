@@ -1,5 +1,5 @@
 <h3><%=@friend.name%></h3>
-<h5><%=link_to "add gifts", new_user_friend_gift_path(current_user, @friend)%>||<%=link_to "see giftlist", user_friend_gifts_path(current_user, @friend)%> </h5>
+<h5><%=link_to "add gifts", new_user_friend_gift_path(current_user, @friend)%>||<%=link_to "see giftlist", user_friend_gifts_path(current_user, @friend), html_options = {:id => "friend-gift"}%> </h5>
 <p><strong>Gift Purchased: </strong><%=@friend.gift_status%></p>
 <p><strong>Amount: </strong><%=@friend.amount_spent%></p>
 <%=link_to "Edit Friend", edit_user_friend_path(current_user, @friend)%>

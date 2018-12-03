@@ -2,7 +2,15 @@ $(function() {
     attachgiftListeners()
   })
   const attachgiftListeners = () => {
-      
+    $('.friend-gifts').on('click', (e) => {
+      e.preventDefault()
+      debugger
+      let userId = $(e.target).attr("data-id")
+      let friendId =$(e.target).attr("friend-id")
+      debugger
+      history.pushState(null, null, `/users/${userId}/friends/${friendId}/gifts`)
+      getGifts(userId, FriendId)
+    })
     $('#gift-form').submit(function(e) {
       e.preventDefault()
       //debugger
@@ -12,7 +20,6 @@ $(function() {
         data: $(this).serialize(),
         dataType: "JSON",
         success: function(gift) {
-            debugger
           showGift(gift.user.id, gift.friend_id, gift.id)
         }
       })
@@ -21,26 +28,28 @@ $(function() {
     $(document).on('click', '.show-gift', (e) => {
       e.preventDefault()
       let userId = $(e.target).attr("data-user")
-      //let friendId = $(e.target).attr("data-friend")
+      let friendId = $(e.target).attr("data-friend")
       let giftId = $(e.target).attr("data-id")
-      showGift(userId, giftId)
+      showGift(userId, friendId, giftId)
     })
   
     $(document).on('click', '.next-gift', (e) => {
       e.preventDefault()
+
       let userId = $(e.target).attr("data-user")
       let friendId = $(e.target).attr("data-friend")
       let giftId = $(e.target).attr("data-id")
+      debugger
       fetch(`/users/${userId}/friends/${friendId}/gifts/${giftId}next.json`)
       .then(res => res.json())
       .then(gift => {
-        showGift(gift.user.id, gift.id)
+        showGift(gift.user.id, friendId, gift.id)
       })
     })
   }
   
-  const getGifts = (userId) => {
-    fetch(`/users/${userId}/gifts.json`)
+  const getGifts = (userId, friendId) => {
+    fetch(`/users/${userId}/friends/${friendId}/gifts.json`)
     .then(res => res.json())
     .then(gifts => {
       $('#app-container').html('<h3>Gifts</h3><br />')
@@ -59,7 +68,6 @@ $(function() {
   }
   
   const showGift = (userId, friendId, giftId) => {
-      debugger
     history.pushState(null, null, `/users/${userId}/friends/${friendId}/gifts/${giftId}`)
     fetch(`/users/${userId}/friends/${friendId}/gifts/${giftId}.json`)
     .then(res => res.json())
@@ -85,19 +93,19 @@ $(function() {
     this.name = gift.name
     this.link = gift.link
     this.price = gift.price
-    debugger
-    //this.buy
+    this.friendId=gift.friend_id
     this.userId = gift.user.id
 
   }
   
   Gift.prototype.formatGameShow = function(){
+    //debugger
     let giftHtml = `
     <h3>Name: ${this.name}</h3><br>
     <p><strong>Link: </strong>${this.link}</p>
     <p><strong>Price: </strong>${this.price}</p>
     <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}edit ">Edit</a> </p><br>
-    <button class="next-gift" data-user="${this.userId}" data-friend="${this.friendId} "data-id="${this.id}">Next</button>
+    <button class="next-gift" data-user="${this.userId}" data-friend="${this.friendId}" data-id="${this.id}">Next</button>
     `
     return giftHtml
   }
