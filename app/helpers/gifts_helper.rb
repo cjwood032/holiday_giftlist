@@ -1,7 +1,7 @@
 module GiftsHelper
     def user_gifts_table(user)
         if @friend
-            render partial: "gifts/table", locals: {user: @user, friends: user.friends, friend: @friend, gifts: user.gifts}
+            render partial: "gifts/table", locals: {user: @user, friends: user.friends, friend: @friend, gifts: @friend.gifts}
         else 
             if user.gifts.size == 0
                 content_tag(:p, "You haven't found any gifts".html_safe)

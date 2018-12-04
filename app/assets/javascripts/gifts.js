@@ -1,6 +1,7 @@
 $(function() {
     attachgiftListeners()
   })
+  
   const attachgiftListeners = () => {
     $('.friend-gifts').on('click', (e) => {
       e.preventDefault()
@@ -11,9 +12,9 @@ $(function() {
       history.pushState(null, null, `/users/${userId}/friends/${friendId}/gifts`)
       getGifts(userId, FriendId)
     })
+
     $('#gift-form').submit(function(e) {
       e.preventDefault()
-      //debugger
       $.ajax({
         type: "POST",
         url: $(this).attr('action'),
@@ -39,7 +40,6 @@ $(function() {
       let userId = $(e.target).attr("data-user")
       let friendId = $(e.target).attr("data-friend")
       let giftId = $(e.target).attr("data-id")
-      debugger
       fetch(`/users/${userId}/friends/${friendId}/gifts/${giftId}next.json`)
       .then(res => res.json())
       .then(gift => {
@@ -95,15 +95,14 @@ $(function() {
     this.price = gift.price
     this.friendId=gift.friend_id
     this.userId = gift.user.id
-
   }
   
   Gift.prototype.formatGameShow = function(){
-    //debugger
     let giftHtml = `
     <h3>Name: ${this.name}</h3><br>
+    <button class="buy-gift" data-user="${this.userId}" data-friend="${this.friendId}" data-id="${this.id}">Buy gift</button>
     <p><strong>Link: </strong>${this.link}</p>
-    <p><strong>Price: </strong>${this.price}</p>
+    <p><strong>Price: $</strong>${this.price}</p>
     <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}edit ">Edit</a> </p><br>
     <button class="next-gift" data-user="${this.userId}" data-friend="${this.friendId}" data-id="${this.id}">Next</button>
     `
@@ -115,7 +114,7 @@ $(function() {
     <tr>
     <td>${this.name}</td>
     <td>${this.link}</td>
-    <td>${this.price}</td>
+    <td>$${this.price}</td>
     <td><a href="#" data-user="${this.userId}" data-id="${this.id}" class="show-gift">See details</a></td>
     </tr>`
     return giftColumn

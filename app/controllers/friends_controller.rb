@@ -22,10 +22,10 @@ class FriendsController < ApplicationController
    
     def next
         @friend = Friend.find(params[:id])
-        #binding.pry
         @next_friend=Friend.find(@friend.id.next)
         render json:@next_friend
     end
+    
     def new
         @friend=Friend.new
     end

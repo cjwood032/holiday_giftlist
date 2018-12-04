@@ -19,22 +19,36 @@ class GiftsController< ApplicationController
             render json: @gift, status: 200
         end
     end
+
     def edit
         @gift = Gift.find(params[:id])  
-        binding.pry
     end
+
     def index
         @user=User.find(params[:user_id])
        
         if params[:friend_id]
-           @friend=Friend.find(params[:friend_id]) 
+            @friend=Friend.find(params[:friend_id]) 
+            @gifts=@friend.gifts
+            #binding.pry
+            respond_to do |format|
+                format.html {render :index}
+            end
+        else
+            @friends=@user.friends
+            @gifts=@user.gifts
+            respond_to do |format|
+                format.html {:index}
+                format.json {render json: @gifts, status:200}
+            end
         end
-        @friends=@user.friends
-        @gifts=@user.gifts
-        respond_to do |format|
-            format.html {:index}
-            format.json {render json: @gifts, status:200}
-        end
+        
+    end
+    
+    def next
+        @gift = Gift.find(params[:id])
+        @next_gift=Friend.find(@gift.id.next)
+        render json:@next_gift
     end
 
     def show
