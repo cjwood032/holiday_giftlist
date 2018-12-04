@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :friends, only: [:show, :new, :create, :edit, :index, :update] do
       resources :gifts, only: [:show, :new, :create, :edit, :index, :update]
       get '/gifts/:id/next', to: 'gifts#next'
+      get '/gifts/:id/buy', to: 'gifts#buy'
     end
     get 'friends/:id/next', to: 'friends#next'
     post 'friends/:id/delete' => 'friends#delete'

@@ -5,13 +5,13 @@ class GiftsController< ApplicationController
         if params[:friend_id]
             @friend=Friend.find(params[:friend_id])
         end
-        #binding.pry
     end
 
     def create
         @gift = Gift.create(gift_params)
         @gift.user_id = params[:user_id]
         @gift.friend_id = params[:friend_id]
+        @gift.quantity=0
         if @gift.save
             friend=Friend.find(params[:friend_id])
             friend.gifts<<@gift
@@ -30,7 +30,6 @@ class GiftsController< ApplicationController
         if params[:friend_id]
             @friend=Friend.find(params[:friend_id]) 
             @gifts=@friend.gifts
-            #binding.pry
             respond_to do |format|
                 format.html {render :index}
             end
@@ -70,9 +69,25 @@ class GiftsController< ApplicationController
         @gift.delete
         redirect_to user_gifts_path
     end
+    
+    def buy
+        gift=Gift.find(params[:id])
+        user=User.find(params[:user_id])
+        friend=Friend.find(params[:friend_id])
+        #gift updates
+        if gift.status != "purchased"
+            gift.status = "purchased"
+        end
+        gift.quantity+=1
+        #friend updates
+
+        #user updates
+        user.amount_spent+=gift.price
+        binding.pry
+    end
+
     private
     def gift_params
-        #binding.pry
         params.require(:gift).permit(
         :name,
         :link,

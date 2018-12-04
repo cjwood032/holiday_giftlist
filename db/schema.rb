@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_220552) do
+ActiveRecord::Schema.define(version: 2018_12_04_202630) do
 
   create_table "friend_gifts", force: :cascade do |t|
     t.integer "friend_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_220552) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_spent"
   end
 
 end
