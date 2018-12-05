@@ -6,12 +6,11 @@ class SessionsController < ApplicationController
     
       def new
         @user = User.new
-        @users = User.all
       end
     
       def create
-        @user = User.find_or_create_by(auth_hash)
-        current_user = @user
+        @user = User.find_by(email: params[:email])
+        binding.pry
         if @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
           redirect_to user_path(@user)

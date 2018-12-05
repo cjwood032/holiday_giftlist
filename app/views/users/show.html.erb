@@ -1,9 +1,11 @@
 <h4><%=@user.name%>'s budget</h4>
-<strong>Budget: $<%=@user.budget%></strong>
+<strong>Budget: </strong>$<%=@user.budget%>
+
 <br><% if @user.friends.size ==0%>
     You need to add friends!
 <%else%>
-    Put a small table of people who still need gifts?
+    <strong>Amount spent: </strong>$<%=@user.amount_spent%><br>
+    You have $<%=@user.budget-@user.amount_spent%> left
 <%end%><br>
 <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
 

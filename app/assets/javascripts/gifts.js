@@ -100,7 +100,7 @@ $(function() {
   Gift.prototype.formatGameShow = function(){
     let giftHtml = `
     <h3>Name: ${this.name}</h3><br>
-    <a href="/users/${this.user_id}/friends/${this.friend_id}/gifts/${this.id}/buy"> >Buy</a>
+    <a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/buy"> Buy</a>
     <p><strong>Link: </strong>${this.link}</p>
     <p><strong>Price: $</strong>${this.price}</p>
     <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}edit ">Edit</a> </p><br>

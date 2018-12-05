@@ -79,11 +79,19 @@ class GiftsController< ApplicationController
             gift.status = "purchased"
         end
         gift.quantity+=1
+        gift.save
         #friend updates
-
+        if friend.gift_status=="No Gift"
+            friend.gift_status="Gift Purchased"
+        end
+        friend.amount_spent+=gift.price
+        friend.save
         #user updates
         user.amount_spent+=gift.price
-        binding.pry
+        user.save
+        respond_to do |format|
+            format.html {redirect_to user_friends_path}
+        end
     end
 
     private
