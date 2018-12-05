@@ -7,8 +7,14 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         @user.amount_spent=0
-        @user.save
-        redirect_to user_path(@user)
+        respond_to do |format|
+            if @user.save
+              session[:user_id] = @user.id
+              format.html { redirect_to user_path(@user) }
+            else
+              format.html { render :new }
+            end
+          end
     end
   
     def new
