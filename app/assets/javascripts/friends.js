@@ -17,7 +17,6 @@ $(function() {
         data: $(this).serialize(),
         dataType: "JSON",
         success: function(friend) {
-          debugger
           showFriend(friend.user.id, friend.id)
         }
       })

@@ -5,10 +5,8 @@ $(function() {
   const attachgiftListeners = () => {
     $('.friend-gifts').on('click', (e) => {
       e.preventDefault()
-      debugger
       let userId = $(e.target).attr("data-id")
       let friendId =$(e.target).attr("friend-id")
-      debugger
       history.pushState(null, null, `/users/${userId}/friends/${friendId}/gifts`)
       getGifts(userId, FriendId)
     })
