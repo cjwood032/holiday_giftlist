@@ -103,7 +103,7 @@ $(function() {
   Friend.prototype.formatShow = function(){
     let friendHtml = `
     <h3>Name: ${this.name}</h3><br>
-    <h5><a href="/users/${this.userId}/friends/${this.id}/gifts/new">Add Gifts</a>||<a href="/users/${this.userid}/friends/${this.id}/gifts" id="friend-gifts">Giftlist</a></h5>
+    <h5><a href="/users/${this.userId}/friends/${this.id}/gifts/new">Add Gifts</a>||<a href="/users/${this.userId}/friends/${this.id}/gifts" id="friend-gifts">Giftlist</a></h5>
     <p><strong>Gift Purchased: </strong>${this.gift_status}</p>
     <p><strong>Amount: </strong>${this.amount_spent}</p>
     <p><a href="/users/${this.userId}/friends/${this.id}/edit ">Edit Friend</a> </p><br>

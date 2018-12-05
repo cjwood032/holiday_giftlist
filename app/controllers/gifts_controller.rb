@@ -57,7 +57,12 @@ class GiftsController< ApplicationController
             format.html
         end
     end
-
+    def edit
+        @gift = Gift.find(params[:id])
+        respond_to do |format|
+            format.html
+        end
+    end
     def update
         @gift = Gift.find(params[:id])
         @gift.update(gift_params)

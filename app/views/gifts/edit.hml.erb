@@ -1,5 +1,0 @@
-<%= render partial: "form", locals:{gift:@gift, friend: @friend, user: current_user}%>
-<form id="delete-game" data-friend=<%=@friend.id%> data-user=<%=current_user.id%> action="delete" method="POST"><input type="submit" value="Delete Friend">
-<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-        <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
-</form>

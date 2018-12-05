@@ -1,5 +1,6 @@
 <%if @friend%>
+    <%=link_to "add gifts", new_user_friend_gift_path(current_user, @friend)%>
     <%= user_gifts_table(current_user) %>
 <%else%>
-    <%= user_gifts_table(current_user) %>
+    <%= purchased_gifts %>
 <%end%>

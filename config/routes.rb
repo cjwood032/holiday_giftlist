@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :gifts, only: [:show, :new, :create, :edit, :index, :update]
       get '/gifts/:id/next', to: 'gifts#next'
       get '/gifts/:id/buy', to: 'gifts#buy'
+      post 'gifts/:id/delete' => 'gifts#delete'
     end
     get 'friends/:id/next', to: 'friends#next'
     post 'friends/:id/delete' => 'friends#delete'

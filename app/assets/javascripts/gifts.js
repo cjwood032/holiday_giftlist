@@ -103,7 +103,7 @@ $(function() {
     <a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/buy"> Buy</a>
     <p><strong>Link: </strong>${this.link}</p>
     <p><strong>Price: $</strong>${this.price}</p>
-    <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}edit ">Edit</a> </p><br>
+    <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/edit ">Edit</a> </p><br>
     <button class="next-gift" data-user="${this.userId}" data-friend="${this.friendId}" data-id="${this.id}">Next</button>
     `
     return giftHtml

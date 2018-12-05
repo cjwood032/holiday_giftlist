@@ -1,0 +1,2 @@
+<form id="delete-gift" data-user=<%=current_user.id%> action="delete" method="POST"><input type="submit" value="Delete Gift">
+<%= render partial: "friendform", locals:{friend: Friend.find(@gift.friend_id), gift: @gift, user: current_user}%>

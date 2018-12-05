@@ -1,0 +1,24 @@
+<h3>Purchased Gifts</h3>
+<table class="table">
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>For</strong></td>
+      <td><strong>Price</strong></td>
+      <td><strong>Link</strong></td>
+      
+      
+    </tr>
+    <% gifts.each do |gift| %>
+      <tr>
+        
+        <td><%= gift.name %></td>
+        <td><%= Friend.find(gift.friend_id).name %></td>
+        <td><%= gift.price %></td>
+        <td><a href="<%= gift.link %>" target="_blank"><%=gift.link%></a></td>
+        
+        
+        
+
+      </tr>
+    <% end %>
+  </table>

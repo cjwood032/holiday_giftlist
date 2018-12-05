@@ -1,3 +1,4 @@
+Gift for <%=friend.name%>
 <%= form_for ([user, gift]), html: {:id => "gift-form"} do |f| %>
     <div class="form-group">
     <%= f.label :name %>:
@@ -7,7 +8,7 @@
     <%= f.label :price %>:
     <%= f.number_field :price, min: 1, max: 999999, step: 1.00 %><br>
     
-    <%= hidden_field_tag :friend_id, @friend.id %>
+    <%= hidden_field_tag :friend_id, friend.id %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     
     <%= f.submit%>
