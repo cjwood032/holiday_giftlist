@@ -57,12 +57,12 @@ $(function() {
         giftColumns += newGift.giftColumn()
       })
       let giftHeadings = ["Name", "Link", "Price", "Buy?"]
-      $('#app-container').append(fillGameTable(giftHeadings, giftColumns))
+      $('#app-container').append(fillGiftTable(giftHeadings, giftColumns))
     })
   }
   
-  const fillGameTable = (headings, columns) => {
-    return makeGameTable(headings) + columns + "</table>"
+  const fillGiftTable = (headings, columns) => {
+    return makeGiftTable(headings) + columns + "</table>"
   }
   
   const showGift = (userId, friendId, giftId) => {
@@ -72,12 +72,12 @@ $(function() {
     .then(gift => {
       $('#app-container').html(`<h5>Gift ${giftId}</h5><br>`)
       let newGift = new Gift(gift)
-      let giftHtml = newGift.formatGameShow()
+      let giftHtml = newGift.formatGiftShow()
       $('#app-container').append(giftHtml)
     })
   }
   
-  const makeGameTable = (headers) => {
+  const makeGiftTable = (headers) => {
     let table = "<table class='table'><tr>"
     headers.forEach((header) => { table += `<td><strong>${header}</strong></td>`})
     table += "</tr>"
@@ -95,11 +95,11 @@ $(function() {
     this.userId = gift.user.id
   }
   
-  Gift.prototype.formatGameShow = function(){
+  Gift.prototype.formatGiftShow = function(){
     let giftHtml = `
     <h3>Name: ${this.name}</h3><br>
     <a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/buy"> Buy</a>
-    <p><strong>Link: </strong>${this.link}</p>
+    <p><strong>Link: </strong><a href="${this.link}">${this.link}</a></p>
     <p><strong>Price: $</strong>${this.price}</p>
     <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/edit ">Edit</a> </p><br>
     <button class="next-gift" data-user="${this.userId}" data-friend="${this.friendId}" data-id="${this.id}">Next</button>
