@@ -6,6 +6,7 @@
 <%else%>
     <strong>Amount spent: </strong>$<%=@user.amount_spent%><br>
     You have $<%=@user.budget-@user.amount_spent%> left
+    <button class="all-friends" data-id=<%=@user.id%>>Friends</button>
 <%end%><br>
 <%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
 
