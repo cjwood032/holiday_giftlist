@@ -31,19 +31,6 @@ $(function() {
       let giftId = $(e.target).attr("data-id")
       showGift(userId, friendId, giftId)
     })
-  
-    $(document).on('click', '.next-gift', (e) => {
-      e.preventDefault()
-
-      let userId = $(e.target).attr("data-user")
-      let friendId = $(e.target).attr("data-friend")
-      let giftId = $(e.target).attr("data-id")
-      fetch(`/users/${userId}/friends/${friendId}/gifts/${giftId}next.json`)
-      .then(res => res.json())
-      .then(gift => {
-        showGift(gift.user.id, friendId, gift.id)
-      })
-    })
   }
   
   const getGifts = (userId, friendId) => {
@@ -70,7 +57,7 @@ $(function() {
     fetch(`/users/${userId}/friends/${friendId}/gifts/${giftId}.json`)
     .then(res => res.json())
     .then(gift => {
-      $('#app-container').html(`<h5>Gift ${giftId}</h5><br>`)
+      $('#app-container').html(``)
       let newGift = new Gift(gift)
       let giftHtml = newGift.formatGiftShow()
       $('#app-container').append(giftHtml)
@@ -97,12 +84,11 @@ $(function() {
   
   Gift.prototype.formatGiftShow = function(){
     let giftHtml = `
-    <h3>Name: ${this.name}</h3><br>
+    <h3>${this.name}</h3><br>
     <a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/buy"> Buy</a>
     <p><strong>Link: </strong><a href="${this.link}">${this.link}</a></p>
-    <p><strong>Price: $</strong>${this.price}</p>
-    <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/edit ">Edit</a> </p><br>
-    <button class="next-gift" data-user="${this.userId}" data-friend="${this.friendId}" data-id="${this.id}">Next</button>
+    <p><strong>Price:</strong> $${this.price}</p>
+    <p><a href="/users/${this.userId}/friends/${this.friendId}/gifts/${this.id}/edit ">Edit Gift</a> </p><br>
     `
     return giftHtml
   }

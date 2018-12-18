@@ -8,7 +8,7 @@ $(function() {
         history.pushState(null, null, `/users/${userId}/friends`)
         getFriends(userId)
       })
-      
+ 
     $('#friend-form').submit(function(e) {
       e.preventDefault()
       $.ajax({
@@ -36,7 +36,13 @@ $(function() {
       fetch(`/users/${userId}/friends/${friendId}/next.json`)
       .then(res => res.json())
       .then(friend => {
+        try {
         showFriend(friend.user.id, friend.id)
+      }
+      catch(err){
+        alert("You have no more friends!")
+
+      }
       })
     })
 
@@ -69,7 +75,7 @@ $(function() {
     fetch(`/users/${userId}/friends/${friendId}.json`)
     .then(res => res.json())
     .then(friend => {
-      $('#app-container').html(`<h5>Friend ${friendId}</h5><br>`)
+      $('#app-container').html(``)
       let newFriend = new Friend(friend)
       let friendHtml = newFriend.formatShow()
       $('#app-container').append(friendHtml)
@@ -83,30 +89,23 @@ $(function() {
     return table
   }
   
-  const total = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2
-  })
-
-  
   function Friend(friend) {
     this.id = friend.id
     this.name = friend.name
-    this.gift_status = friend.gift_status
-    this.amount_spent = friend.amount_spent
+    this.giftStatus = friend.gift_status
+    this.amountSpent = friend.amount_spent
     this.userId = friend.user.id
 
   }
   
   Friend.prototype.formatShow = function(){
     let friendHtml = `
-    <h3>Name: ${this.name}</h3><br>
+    <h3>${this.name}</h3>
     <h5><a href="/users/${this.userId}/friends/${this.id}/gifts/new">Add Gifts</a>||<a href="/users/${this.userId}/friends/${this.id}/gifts" id="friend-gifts">Giftlist</a></h5>
-    <p><strong>Gift Purchased: </strong>${this.gift_status}</p>
-    <p><strong>Amount: </strong>${this.amount_spent}</p>
-    <p><a href="/users/${this.userId}/friends/${this.id}/edit ">Edit Friend</a> </p><br>
-    <button class="next-friend" data-user="${this.userId}" data-id="${this.id}">Next</button>
+    <p><strong>Gift Purchased: </strong>${this.giftStatus}</p>
+    <p><strong>Amount: </strong>${this.amountSpent}</p>
+    <p><a href="/users/${this.userId}/friends/${this.id}/edit ">Edit Friend</a>
+    <button class="next-friend" data-user="${this.userId}" data-id="${this.id}">Next</button> </p>
     `
     return friendHtml
   }
@@ -115,8 +114,8 @@ $(function() {
     let friendColumn = `
     <tr>
     <td>${this.name}</td>
-    <td>${this.gift_purchased}</td>
-    <td>${this.purchase_amount}</td>
+    <td>${this.giftStatus}</td>
+    <td>${this.amountSpent}</td>
     <td><a href="#" data-user="${this.userId}" data-id="${this.id}" class="show-friend">See details</a></td>
     </tr>`
     return friendColumn

@@ -44,11 +44,6 @@ class GiftsController< ApplicationController
         
     end
     
-    def next
-        @gift = Gift.find(params[:id])
-        @next_gift=Friend.find(@gift.id.next)
-        render json:@next_gift
-    end
 
     def show
         @gift = Gift.find(params[:id])

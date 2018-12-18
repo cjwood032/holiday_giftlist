@@ -1,6 +1,5 @@
 <h3><%=@gift.name%></h3>
 <a href="/users/<%=@gift.user_id%>/friends/<%=@gift.friend_id%>/gifts/<%=@gift.id%>/buy"å>Buy</a>
-<p><strong> Link: </strong><%=@gift.link%></p>
-<p><strong>Price: $</strong><%=@gift.price%></p>
+<p><strong> Link: </strong><a href="#{@gift.link}"><%=@gift.link%></a></p>
+<p><strong>Price:</strong> $<%=@gift.price%></p>
 <%=link_to "Edit Gift", edit_user_friend_gift_path(current_user, @gift)%>
-<button class="next-gift" data-friend=<%=@gift.friend_id%>data-user=<%=@gift.user_id%> data-id=<%=@gift.id%>>Next</button>
