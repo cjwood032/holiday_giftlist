@@ -66,7 +66,12 @@ class GiftsController< ApplicationController
 
     def delete
         @gift = Gift.find(params[:id])
+        
+        user=User.find(params[:user_id])
+        friend=Friend.find(params[:friend_id])
         @gift.delete
+        user.amount_spent-=gift.price
+        user.save
         redirect_to user_gifts_path
     end
     
