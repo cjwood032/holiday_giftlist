@@ -69,9 +69,17 @@ class GiftsController< ApplicationController
         
         user=User.find(params[:user_id])
         friend=Friend.find(params[:friend_id])
+        if @gift.status == "purchased"
+            user.amount_spent-=@gift.price
+            user.save
+            friend.amount_spent-=@gift.price
+            friend.gifts.delete(@gift)
+            if friend.gifts.length==0
+               friend.gift_status="No Gift" 
+            end
+            friend.save
+        end
         @gift.delete
-        user.amount_spent-=gift.price
-        user.save
         redirect_to user_gifts_path
     end
     
