@@ -39,7 +39,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-google'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
