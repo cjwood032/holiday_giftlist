@@ -55,7 +55,7 @@ $(function() {
     fetch(`/users/${userId}/friends.json`)
     .then(res => res.json())
     .then(friends => {
-      $('#app-container').html('<h3>Friends</h3><br />')
+      $('#app-container').html('<h1>Friends</h1>')
       let friendColumns = ''
       friends.forEach(friend => {
         let newFriend = new Friend(friend)
@@ -83,9 +83,9 @@ $(function() {
   }
   
   const makeTable = (headers) => {
-    let table = "<table class='table'><tr>"
-    headers.forEach((header) => { table += `<td><strong>${header}</strong></td>`})
-    table += "</tr>"
+    let table = "<table class='table table-striped'><thead class=\"thead-light\" style=\"background-color: #e3f2fd\"><tr>"
+    headers.forEach((header) => { table += `<th><strong>${header}</strong></th>`})
+    table += "</tr></thead>"
     return table
   }
   
