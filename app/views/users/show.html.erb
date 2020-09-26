@@ -12,8 +12,8 @@
 </div>
     <div class = "row">
     <div class= "col-md-3"><h3>Budget</h3> $<%=@user.budget%></div>
-    <div class= "col-md-3"><strong>Amount spent: </strong>$<%=@user.amount_spent%></div>
-    <div class= "col-md-3">You have $<%=@user.budget-@user.amount_spent%> left</div>
+    <div class= "col-md-3"><h3>Amount spent: </h3>$<%=@user.amount_spent%></div>
+    <div class= "col-md-3"><h3>You have $<%=@user.budget-@user.amount_spent%> left</h3></div>
     </div>
     <button class="all-friends btn btn-primary btn-lg" data-id=<%=@user.id%>>All Friends</button>
 <%end%>
