@@ -1,11 +1,13 @@
 <h2>Gifts for <%=friend.name%></h2>
-<table class="table">
+<table class="table table-striped">
+<thead class="thead-light" style="background-color: #e3f2fd">
     <tr>
-      <td><strong>Name</strong></td>
-      <td><strong>Link</strong></td>
-      <td><strong>Price</strong></td>
-      <td><strong>See Gift</strong></td>
+      <th><strong>Name</strong></th>
+      <th><strong>Link</strong></th>
+      <th><strong>Price</strong></th>
+      <th><strong>See Gift</strong></th>
     </tr>
+    </thead>
     <% gifts.find_each do |gift| %>
       <tr>
         

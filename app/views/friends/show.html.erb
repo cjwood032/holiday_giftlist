@@ -1,6 +1,5 @@
-<h3><%=@friend.name%></h3>
-<h5><%=link_to "Add Gifts", new_user_friend_gift_path(current_user, @friend)%>||<%=link_to "Giftlist", user_friend_gifts_path(current_user, @friend), html_options = {:id => "friend-gift"}%> </h5>
-<p><strong>Gift Purchased: </strong><%=@friend.gift_status%></p>
-<p><strong>Amount: </strong><%=@friend.amount_spent%></p>
-<%=link_to "Edit Friend", edit_user_friend_path(current_user, @friend)%>
-<button class="next-friend" data-user=<%=@friend.user_id%> data-id=<%=@friend.id%>>Next</button>
+<h1><%=@friend.name%></h1>
+<div class="row"><%=link_to "Add Gifts", new_user_friend_gift_path(current_user, @friend), class: "btn btn-primary" %><%=link_to "Edit Friend", edit_user_friend_path(current_user, @friend), class: "btn btn-info"%><%=link_to "Giftlist", user_friend_gifts_path(current_user, @friend), html_options = {:id => "friend-gift", :class =>"btn btn-primary"}%> </div>
+<div class="row"><strong>Gift Purchased: </strong><%=@friend.gift_status%></div>
+<div class="row"><strong>Amount: </strong><%=@friend.amount_spent%></div>
+<div class="row"><button class="next-friend btn btn-primary btn-lg" data-user=<%=@friend.user_id%> data-id=<%=@friend.id%>>Next</button></div>

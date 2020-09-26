@@ -100,12 +100,11 @@ $(function() {
   
   Friend.prototype.formatShow = function(){
     let friendHtml = `
-    <h3>${this.name}</h3>
-    <h5><a href="/users/${this.userId}/friends/${this.id}/gifts/new">Add Gifts</a>||<a href="/users/${this.userId}/friends/${this.id}/gifts" id="friend-gifts">Giftlist</a></h5>
-    <p><strong>Gift Purchased: </strong>${this.giftStatus}</p>
-    <p><strong>Amount: </strong>${this.amountSpent}</p>
-    <p><a href="/users/${this.userId}/friends/${this.id}/edit ">Edit Friend</a>
-    <button class="next-friend" data-user="${this.userId}" data-id="${this.id}">Next</button> </p>
+    <h1>${this.name}</h1>
+    <div class="row"><a href="/users/${this.userId}/friends/${this.id}/gifts/new" class="btn btn-primary">Add Gifts</a><a class="btn btn-info" href="/users/${this.userId}/friends/${this.id}/edit ">Edit Friend</a><a href="/users/${this.userId}/friends/${this.id}/gifts" id="friend-gifts" class="btn btn-primary">Giftlist</a></div>
+    <div class="row"><strong>Gift Purchased: </strong>${this.giftStatus}</div>
+    <div class="row"><strong>Amount: </strong>${this.amountSpent}</div>
+    <div class="row"><button class="next-friend btn btn-primary" data-user="${this.userId}" data-id="${this.id}">Next</button></div>
     `
     return friendHtml
   }
