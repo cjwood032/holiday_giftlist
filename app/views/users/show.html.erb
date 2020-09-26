@@ -6,8 +6,8 @@
     You need to add friends!
 <%else%>
 <div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="#{@user.amount_spent}" aria-valuemin="0" aria-valuemax="#{@user.budget}" style="width: #{@user.amount_spent/@user.budget}%;">
-    <%=@user.amount_spent%>
+  <div class="progress-bar" role="progressbar" aria-valuenow="<%=@user.budget-@user.amount_spent%>" aria-valuemin="0" aria-valuemax="<%=@user.budget%>" style="width: <%=100*(@user.budget-@user.amount_spent)/@user.budget%>%;">
+    $<%=@user.budget-@user.amount_spent%> remaining
   </div>
 </div>
     <div class = "row">
