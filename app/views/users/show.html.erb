@@ -1,12 +1,21 @@
-<h4><%=@user.name%>'s budget</h4>
-<strong>Budget: </strong>$<%=@user.budget%>
-
-<br><% if @user.friends.size ==0%>
+<div class = "row">
+    <h2><%=@user.name%>'s budget</h2>
+    
+</div>
+<% if @user.friends.size ==0%>
     You need to add friends!
 <%else%>
-    <strong>Amount spent: </strong>$<%=@user.amount_spent%><br>
-    You have $<%=@user.budget-@user.amount_spent%> left
-    <button class="all-friends" data-id=<%=@user.id%>>Friends</button>
-<%end%><br>
-<%= link_to "Add a Friend", new_user_friend_path(@user.id)%>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="#{@user.amount_spent}" aria-valuemin="0" aria-valuemax="#{@user.budget}" style="width: #{@user.amount_spent/@user.budget}%;">
+    <%=@user.amount_spent%>
+  </div>
+</div>
+    <div class = "row">
+    <div class= "col-md-3"><h3>Budget</h3> $<%=@user.budget%></div>
+    <div class= "col-md-3"><strong>Amount spent: </strong>$<%=@user.amount_spent%></div>
+    <div class= "col-md-3">You have $<%=@user.budget-@user.amount_spent%> left</div>
+    </div>
+    <button class="all-friends btn btn-primary btn-lg" data-id=<%=@user.id%>>All Friends</button>
+<%end%>
+<%= link_to "Add a Friend", new_user_friend_path(@user.id), class:"btn btn-primary btn-lg"%>
 

@@ -12,12 +12,27 @@
  *
  */
 @import "bootstrap";
-
+*{
+  font-family: Snowburst;
+  font-size: 1.2em;
+}
  .field_with_errors {
    padding: 2px;
    background-color: red;
    display: table;
  }
-#navbar-name {
+.navbar-name {
   color: white
+}
+.nav{
+  padding-top: 1em;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+.navbar-brand {
+  float: none;
+  display: inline;
+  font-size: 1.4em;
+  font-weight: 600;
 }
