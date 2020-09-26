@@ -52785,3 +52785,158 @@ Processing by GiftsController#show as HTML
 Completed 200 OK in 28ms (Views: 23.4ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for 127.0.0.1 at 2020-09-26 10:22:49 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 3314ms (Views: 3292.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-a028515ffebd051678c31410a2660fa27153aabb66f32e4f449edb3febc0c00f.js" for 127.0.0.1 at 2020-09-26 10:22:53 -0400
+Started GET "/assets/application-93baf2a035f79420bd4ca4018100d5826b7d87417106281dfb684e1df28ba71e.css" for 127.0.0.1 at 2020-09-26 10:22:53 -0400
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE DATABASE "my_database_development" ENCODING = 'utf8'[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "my_database_test" ENCODING = 'utf8'[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5168794849566389475)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to CreateUsers (20181123194657)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "budget" integer, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181123194657_create_users.rb:3
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5168794849566389475)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (276.0ms)[0m  [1m[35mCREATE DATABASE "holiday_database_development" ENCODING = 'utf8'[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (81.2ms)[0m  [1m[35mCREATE DATABASE "holiday_database_test" ENCODING = 'utf8'[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (41.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to CreateUsers (20181123194657)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "budget" integer, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181123194657_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181123194657"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to CreateFriends (20181123194724)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "friends" ("id" bigserial primary key, "name" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181123194724_create_friends.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181123194724"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to CreateGifts (20181123194735)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "gifts" ("id" bigserial primary key, "user_id" integer, "friend_id" integer, "name" character varying, "link" character varying, "price" integer, "status" character varying, "quantity" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20181123194735_create_gifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181123194735"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to CreateFriendGifts (20181124185210)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "friend_gifts" ("id" bigserial primary key, "friend_id" integer, "gift_id" integer)[0m
+  ↳ db/migrate/20181124185210_create_friend_gifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181124185210"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to AddGiftStatusToFriend (20181124221102)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "friends" ADD "gift_status" character varying[0m
+  ↳ db/migrate/20181124221102_add_gift_status_to_friend.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181124221102"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to AddAmountSpentToFriend (20181124221726)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "friends" ADD "amount_spent" integer[0m
+  ↳ db/migrate/20181124221726_add_amount_spent_to_friend.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181124221726"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to DropFriendIdFromGifts (20181127200551)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "gifts" DROP COLUMN "friend_id"[0m
+  ↳ db/migrate/20181127200551_drop_friend_id_from_gifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181127200551"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to Add (20181127220552)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "gifts" ADD "friend_id" integer[0m
+  ↳ db/migrate/20181127220552_add.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181127220552"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to AddspenttoUser (20181204202148)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to AddspenttoUser (20181204202148)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to AddspenttoUser (20181204202148)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+Migrating to AddamtspenttoUser (20181204202630)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "amount_spent" integer[0m
+  ↳ db/migrate/20181204202630_addamtspentto_user.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20181204202630"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (3.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-09-26 14:40:22.457177"], ["updated_at", "2020-09-26 14:40:22.457177"]]
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2048092826100189120)[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/christopherwood/.rvm/gems/ruby-2.6.5/bin/rake:23
